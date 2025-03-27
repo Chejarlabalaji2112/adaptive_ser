@@ -1,6 +1,6 @@
 import streamlit as st
 import psutil
-from back_end.adaptive_learning import feed_back_manager
+from backend.adaptive_learning import feed_back_manager
 st.subheader("📢 Provide Feedback")
 user_feedback = st.radio(f"Is the predicted emotion ['{st.session_state.prediction}'] correct?", ["Yes", "No"])
 if user_feedback == "No":

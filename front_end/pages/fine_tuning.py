@@ -1,11 +1,12 @@
 import streamlit as st
 import psutil
-from back_end.adaptive_learning.fine_tuning_manager import fine_tune
+from backend.adaptive_learning.fine_tuning_manager import fine_tune
 st.subheader("Fine-Tuning")
 fine_tune_now = st.radio("do you want a force fine-tune now?", ["YES", "NO"])
 
-if fine_tune_now =="YES":
-    fine_tune()
+if st.button("submit"):
+    if fine_tune_now =="YES":
+        fine_tune()
 
 st.subheader("📊 System Performance")
 cpu_usage = psutil.cpu_percent()

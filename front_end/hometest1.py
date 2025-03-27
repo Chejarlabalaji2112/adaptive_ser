@@ -1,4 +1,4 @@
-from back_end import main
+from backend import main
 import streamlit as st
 import json
 import numpy as np
@@ -11,8 +11,8 @@ import time
 
 
 # Load feedback values
-json_path = '/home/badri/mine/ser/gnd/capstone_project/Back_end/back_end/data/feedback_interval.json'
-audio_path = '/home/badri/mine/ser/gnd/capstone_project/Back_end/back_end/data/user_audio/'
+json_path = '/home/badri/mine/ser/capstone_project/backend_lib/backend/data/feedback_interval.json'
+audio_path = '/home/badri/mine/ser/capstone_project/backend_lib/backend/data/user_audio/'
 with open(json_path, 'r') as f:
     values = json.load(f)
 
