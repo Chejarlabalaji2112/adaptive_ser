@@ -55,8 +55,9 @@ def prediction(path1):
     res=get_predict_feat(path1)
     predictions=loaded_model.predict(res)
     y_pred = encoder.inverse_transform(predictions)
-    conf = predictions[0][np.argmax(predictions)] # this is the confidence level
-    return y_pred[0][0], conf*100
+    conf = float(f"{predictions[0][np.argmax(predictions)]}")
+    conf = float(f"{conf:.4f}")# this is the confidence level
+    return y_pred[0][0], conf * 100
 
 try:
     missing_files = [key for key, path in paths.items() if not os.path.exists(path)]
