@@ -1,0 +1,40 @@
+<!-- feedback.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">🏠 Home</a></li>
+            <li><a href="/feedback">📢 Feedback</a></li>
+            <li><a href="/fine-tune">🔧 Fine-Tune</a></li>
+            <li><a href="/about">ℹ️ About</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>📢 Provide Feedback</h2>
+        <p>Is the predicted emotion '<span id="predicted_emotion"></span>' correct?</p>
+        <input type="radio" name="feedback" value="yes"> Yes
+        <input type="radio" name="feedback" value="no" id="no_feedback"> No
+        <div id="correct_emotion_dropdown" style="display:none;">
+            <label for="correct_emotion">Select the correct emotion:</label>
+            <select id="correct_emotion">
+                <option value="neutral">Neutral</option>
+                <option value="happy">Happy</option>
+                <option value="sad">Sad</option>
+                <option value="angry">Angry</option>
+                <option value="surprise">Surprise</option>
+                <option value="fear">Fear</option>
+                <option value="disgust">Disgust</option>
+            </select>
+        </div>
+        <button id="submit_feedback">Submit</button>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

@@ -4,36 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Speech Emotion Recognition</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2 class="text-center">🎙️ Speech Emotion Recognition</h2>
-        <p><strong>Threshold:</strong> {{ threshold }}</p>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/">🏠 Home</a></li>
+            <li><a href="/feedback">📢 Feedback</a></li>
+            <li><a href="/fine-tune">🔧 Fine-Tune</a></li>
+            <li><a href="/about">ℹ️ About</a></li>
+        </ul>
+    </nav>
 
-        <div class="mb-3">
-            <label class="form-label">Upload an Audio File:</label>
-            <input type="file" id="audioFile" class="form-control" accept="audio/wav">
-            <button class="btn btn-primary mt-2" onclick="uploadAudio()">Predict</button>
+    <!-- Main Content -->
+    <div class="container">
+        <h1>🎙️ Speech Emotion Recognition</h1>
+        <p>Upload or record your voice to analyze emotions.</p>
+
+        <!-- Audio Upload & Recording -->
+        <div class="input-section">
+            <div class="upload">
+                <input type="file" id="audioUpload" accept="audio/wav">
+                <button onclick="uploadAudio()">Upload & Predict</button>
+            </div>
+            <div class="record">
+                <button id="recordBtn" onclick="startRecording()">🎤 Record</button>
+                <button id="stopBtn" onclick="stopRecording()" disabled>⏹ Stop</button>
+            </div>
         </div>
 
-        <div class="mb-3">
-            <button class="btn btn-secondary" onclick="recordAudio()">🎤 Record</button>
-        </div>
+        <!-- 'Audio Waveform -<h2>Audio Waveform</h2><canvas id="waveformCanvas"></canvas>'-->
 
-        <h4>Prediction Result</h4>
-        <p><strong>Emotion:</strong> <span id="predictedEmotion">-</span></p>
-        <p><strong>Confidence:</strong> <span id="confidence">-</span></p>
-
-        <div id="feedbackSection" style="display: none;">
-            <h4>Provide Feedback</h4>
-            <p>Is the prediction correct?</p>
-            <button class="btn btn-success" onclick="submitFeedback('Yes')">Yes</button>
-            <button class="btn btn-danger" onclick="submitFeedback('No')">No</button>
-        </div>
+        <!-- Prediction Result -->
+        <div id="predictionResult"></div>
     </div>
 
-    <script src="/static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
-

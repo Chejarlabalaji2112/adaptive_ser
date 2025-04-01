@@ -1,8 +1,7 @@
 # will be filled in a minute
 import psutil
 import sqlite3
-from backend.main import loaded_model
-from backend.main import encoder, scaler
+from backend import main
 CPU_THRESHOLD = 30
 from tensorflow.keras.optimizers import Adam
 import numpy as np
@@ -108,8 +107,8 @@ def training_data(feedbacks):
     emotions.to_csv("/home/badri/mine/ser/capstone_project/backend_lib/backend/data/fine_tuning_dataset/emotions_ff.csv", index = False)
     x = emotions.iloc[:, :-1].values
     y = emotions['emotions'].values
-    y = encoder.transform(np.array(y).reshape(-1, 1))
-    x = scaler.transform(x)
+    y = main.encoder.transform(np.array(y).reshape(-1, 1))
+    x = main.scaler.transform(x)
     x_cnn = np.expand_dims(x, axis =2)
     return x,y
 
@@ -126,8 +125,8 @@ def fine_tune():
             optimizer.learning_rate = 0.0001
         if input(f"total is: {len(feedbacks)}: ") == 'y':
             x_data, y_data = training_data(feedbacks)
-            loaded_model.compile(optimizer = optimizer, loss = 'categorical_crossentropy', metrics=['accuracy'])
-            history = loaded_model.fit(x_data, y_data, batch_size = len(feedbacks), epochs = 1, verbose = 0)
+            main.loaded_model.compile(optimizer = optimizer, loss = 'categorical_crossentropy', metrics=['accuracy'])
+            history = main.loaded_model.fit(x_data, y_data, batch_size = len(feedbacks), epochs = 1, verbose = 0)
         # need to handle exceptions
         # clear the feedbacks storage for new feedbacks.
 
