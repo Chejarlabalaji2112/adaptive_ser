@@ -29,10 +29,3 @@ This model performs real-time emotion classification from speech input.
 - Incorporates user feedback into the training data to enhance model accuracy over time.
 
 ---
-
-## 🛠️ Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/adaptive-ser-system.git
-   cd adaptive-ser-system
