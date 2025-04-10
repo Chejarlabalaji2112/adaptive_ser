@@ -4,7 +4,7 @@ This repository contains the implementation of an **Adaptive Speech Emotion Reco
 
 ## 🧩 System Architecture
 
-![Adaptive SER Architecture](images/architecture.png)
+![Adaptive SER Architecture](images/architecture.jpg)
 
 The system comprises the following core components:
 
